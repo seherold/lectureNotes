@@ -30,7 +30,10 @@ Proving two statements are equivalent with deduction?
 statement1
 statement2
 
+Proof 1: statement1 |- statement2
 
+
+Proof 2: statement2 |- statement1
 
 
 ////////////////////////////////
@@ -51,6 +54,8 @@ if (extraCredit == true || grade < 90) {
         //do stuff
     }
 }
+
+if (extraCredit == true || (grade < 90 && grade >= 80))
 
 
 --> how does the distributive law tell us we can rewrite 
@@ -76,6 +81,8 @@ Example:
 if (x > 5) {
     y = 17;
 }
+
+y = 17
 
 ///////////////////////////////
 
@@ -127,30 +134,52 @@ See Canvas announcement for list of topics.
 How to prove two propositional logic statements are 
 equivalent?
 
-    Approach 1:
+    Approach 1: truth tables (2)
+        for each truth assignment, both statements have the same ouput
 
-    Approach 2:
-
-
+    Approach 2: deduction (2)
+        statement1 |- statement2
+        statement2 |- statement1
 
 
 How to prove propositional logic statements are 
 NOT equivalent?
+
+find ONE counterexample (a truth assignment) where the two statements have 
+different outputs
+
+Can't really do deduction here, you may get stuck in proof but this doesn't
+prove that the two statements aren't equivalent, you could just be bad at proofs
 
 
 
 
 What is satisfiability? 
 
+There exists at least one truth assignment that makes the statement output true
+
+ARE satisfiable: contingent, tautology
+NO satisfiable: contradictory
+
+prove satisfiability: find ONE truth assignment
+prove NOT satisfiable: full truth table, should be contradictory
+
 
 
 - Determining whether an argument is valid or invalid
     (what is an argument?)
-    valid: 
+    premises, conclusion
+
+    valid: every tiem all premises are true, then the conclusion is also true
 
     how prove valid?
+     1) make a "combined" truth table, make sure that every truth assignment that makes all
+     premises true, also makes the conclusion true
+
+     2) deduction
 
     how prove invalid?
+     find one truth assignment that makes all premises true but the conclusion is false
 
 
 /////////////////////////////////////////
