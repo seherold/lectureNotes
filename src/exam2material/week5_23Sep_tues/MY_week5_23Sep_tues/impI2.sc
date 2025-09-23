@@ -15,11 +15,14 @@ import org.sireum.justification.natded.prop._
         5 SubProof (
           6 Assume (p),
           7 (r) by ImplyE(1, 6)
-        )
-        
-        
-      )
-
+        ),
+        8 SubProof (
+          9 Assume (q),
+          10 (r) by ImplyE(2,9),
+        ),
+        11 (r) by OrE(4,5,8)
+      ),
+      12 (p | q __>: r) by ImplyI(3)
     )
   )
 }
