@@ -20,9 +20,23 @@ p → q   equivalent to   ¬p ∨ q
 
 p → q  ⊢  ¬p ∨ q
 
+//no obvious pattern here so try prove by contradiction
+
+Assume ¬(¬p ∨ q)
+    //goal: ¬p, if I could get ¬p, I could build ¬p ∨ q, contradicts with assumption
+    //Use NegI to try to get ¬p
+        //Assume p
+        //goal:F
+        //get q
+        //build ¬p ∨ q
+    //goal: F (contradiction)
 
 ¬p ∨ q   ⊢  p → q
 
+use ImplyI to try to get p → q
+    Assume p
+        try OrE on premise to get q in both cases
+    goal: q
 
 /////////////////////////
 
@@ -32,9 +46,26 @@ HW 4 problem 7
 
 
 ¬(p → q)  ⊢  p ∧ ¬q
+//trying to prove p and ¬q separately won't work here
+
+//try PbC to get p ∧ ¬q
+    Assume (¬(p ∧ ¬q))
+
+    try to use ImplyI to get p → q to contradict with the premise
+        Assume p
+            try to use PbC to get our goal of q
+                Assume ¬q
+
+                goal: F
+
+        goal: q
+
+    goal: F
 
 
 p ∧ ¬q   ⊢   ¬(p → q)
+
+Use NegI to get conclusion. Assume p → q
 
 
 
@@ -44,30 +75,64 @@ How do we approach proofs?
 
 1. Write out all the premises
 2. Extract all information from premises 
+        AND statement - break apart both sides
+        IMPLIES statement - see if we have or can get the IF part, then use ImplyE
+
+
 3. Look at what you are trying to prove (what do we look for in goal/conclusion?)
+                                        top level operator
 
-    ∧ - 
-
-    ∨ - 
-
-    → - 
-
-    ¬(something) - 
-
-    just a propositional atom? 
+    ∧ - try to prove both sides separately, then put them
+        together
+        if nothing else works, try PbC on the whole conclusion
 
 
-After each claim - 
+    ∨ - can you get one of the two sides? use OrI to get conclusion.
+        see if you have an OR statement as a premise 
+            or a previous claim. If you do, use OrE
+        if nothing else works, try PbC on the whole conclusion
+
+    → - open ImplyI subproof. Assume the if (LHS) part and try to get to the then (RHS) part
+
+    ¬(something) - open NegI subproof. Assume "something".
+        Goal: F
+
+    just a propositional atom? like p.
+        find where it appears in a premise or previous claim. Think about what you need to do to extract it.
+
+        try OrE if an Or statement is available.
+
+        if nothing works, try PbC. Assume ¬p, try to get F.
+
+After each claim - see if there is anything else to extract. Scan earlier claims to see
+                    if you can put them together with new claims.
 
 
 
-Inside a subproof - 
+Inside a subproof - write down what you goal is.
+    OrE, ImplyI, PbC, NegI -- these all involve subproofs
+
+    OrE - need to already have an OR statement.
+        your goal in both subproofs is whatever your current
+        goal is when you open those subproofs
+
+    ImplyI - have to assume the LHS. Goal must be RHS.
+
+    PbC - assume must be a NOT statement. Goal is F.
+        Afterwards must conclude the assume statement without the NOT
+
+    NegI - assume whatever. Goal must be F.
+        Afterwards must conclude ¬(assume)
 
 
 
 Doesn't fit a pattern or doesn't work out from above?
 
+    OrE -- if you have Or statement somewhere
+    PbC -- if you have negation anywhere
 
+If you get stuck in an OrE subproof and can't get your goal, 
+see if you can get F and then use BottomE
 
 
 --> when do we open a subproof?
@@ -77,6 +142,10 @@ Doesn't fit a pattern or doesn't work out from above?
 
 
 --> can we assume anything in a subproof? 
+
+Yes you can but at the end of them you have to have to use one of the four rules OrE, ImplyI, PbC, NegI
+
+SO, don't open a subproof unless you know how you're going to close it
 
 
 
@@ -133,10 +202,15 @@ COMPLETENESS: everything that is true is provable
 
 --> what would it mean if a proof system was unsound?
 
+I could prove things that are not true.
+
 
 
 
 --> what would it mean if a proof system was incomplete?
+
+There would be a true (valid) arguments that I could not prove with
+    my proof system
 
 
 
@@ -156,6 +230,8 @@ are true, then q is also true
 //////////////////////////////////////
 
 (in-class quiz)
+
+first question would be good practice for exam
 
 //////////////////////////////////////
 
@@ -178,21 +254,24 @@ A set is an unordered collection of elements
 
 Example: A = {1,4,7,11,20}
 
-    1 ? 
-    2 ?
+    1 ∈ A
+    2 ∉ A
 
 
 
 - Common sets in math:
 
-    ℕ: 
-    ℤ: 
-    ℚ: 
-    ℝ: 
-    ℂ: 
-    ∅: 
+    ℕ: natural numbers (positive integers, not including 0 in this course)
+        1,2,3,...
+    ℤ: all integers (-5, -4, ... , 0, 1, 2, ...)
+    ℚ: rational numbers, p/q where p and q are integers and q != 0
+    ℝ: real numbers (numbers with decimals)
+    ℂ: complex numbers
+    ∅: empty set
 
 ℕ ⊂ ℤ ⊂ ℚ ⊂ ℝ ⊂ ℂ
+
+⊂ - a subset of
 
 ////////////////////////////////////
 
@@ -206,24 +285,38 @@ Set builder notation.
 
 {x: x ∈ ℕ, 5 ≤ x ≤ 10}
 
+the set of all x such that x is a natural number between 5 and 10 inclusive
+
+{5,6,7,8,9,10}
+
 
 
 {k : k is a letter in "abracadabra"}
+
+{a,b,r,c,d}
 
 
 
 
 {x : x = 2k,  k ∈ ℕ}
 
+{2, 4, 8, 10, ...}
+
 
 
 
 {n : n = k^2, k ∈ Z}
 
+the set of all numbers that look like perfect squares
+
+{0, 1, 4, 9, 16, ...}
+
 
 
 
 {n : n = 3a + 1, a ∈ ℕ, 1 ≤ a ≤ 4}
+
+{4, 7, 10, 13}
 
 
 
