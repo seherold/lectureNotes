@@ -11,6 +11,8 @@ HW 5 comments:
 
 4. {x : x ∈ ℤ, x ≥ -5} ∪ {x : x ∈ ℤ, x ≤ 7}
 
+ℤ
+
 
 
 
@@ -18,22 +20,75 @@ HW 5 comments:
 What does that tell us about A and B?
 
     Common mistake:
+        B is the empty sets
+        B = A
+
+    Answer: B can be everything from nothing in A to everything in A. B is a subset of A.
 
 
 6. Suppose A ⋂ B = A for two sets A and B.
 What does that tell us about A and B?
 
     Common mistake:
+        A = B
 
+    Answer: A is a subset of B
 
 
 7 (a). If A ⋃ C = B ⋃ C, must A = B?
 
+    Common mistake:
 
+        Example 1:
+            A = {1}
+            B = {1}
+            C = {1,2}
 
+        Example 2:
+            A = {4}
+            B = {2}
+            C = {1,2,3}
+
+            A ⋃ C = {1,2,3,4}
+            B ⋃ C = {1,2,3}
+
+            This is just an unrelated example. Because I didn't make a promise A ⋃ C = B ⋃ C
+
+        Example 3:
+            Good counterexample:
+                A = {4}
+                B = {}
+                C = {4}
+
+                A ⋃ C = {4}
+                B ⋃ C = {4}
+
+            The unions are the same but A does not equal B (we borke our promise)
 
 
 7 (b). If A ⋂ C = B ⋂ C, must A = B?
+
+Want couterexample, need A ⋂ C = B ⋂ C to be true
+but A not equal to B
+
+A = {1}
+B = {2}
+C = {3}
+
+Here, the intersections are both the empty set but A does equal B
+
+
+Predicates, #5:
+
+translation:
+    Not all students who are KS residents don't live on campus
+
+
+Couterexample: 
+    true. Just need ONE student to demonstrate that the promise wasn't always true.
+
+        find a studnet who is a KS resident but lives on campus.
+        Ava or Steve. Only need one however.
 
 
 ////////////////////
@@ -66,7 +121,7 @@ Examples -- are the following arguments valid?
 Premises: ∀ x (P(x) → Q(x)), ∃ x P(x)
 Conclusion: ∃ x Q(x)
 
-Valid or not? 
+Valid or not? yes. Whoever my P is, that individual will also be Q
 
 
 ///
@@ -74,13 +129,21 @@ Valid or not?
 Premises: ∀ x P(x) : everyone in my domain is P-ish
 Conclusion: ∃ x P(x): there is someone in domain who is P-ish
 
-Valid or not? 
+Valid or not? invalid. Not true for an empty domain.
+
+Everyone who is nothing, is P-ish, premise TRUE.
+We can't find someone who is P-ish, conclusion FALSE.
 
 /////////////////////////////////
 
 soundness ?
+    all arguments proved with deduction were actually true
+
 
 completeness ?
+    all true arguements can be proved with deduction
+
+predicate logic with be incomplete
 
 /////////////////////////////////
 
@@ -113,7 +176,7 @@ In Logika, ∃ x P(x) is written as:
 
 
 
---> what is "T"?
+--> what is "T"? my domain. Can be any type.
 
 
 Settings->Command Palette->Tasks (run task)->Sireum slang template->
@@ -154,6 +217,9 @@ import org.sireum.justification.natded.pred._
         )
     )
 }
+
+pred1: T => B means pred1 takes in something of type T and returns a boolean
+indiv1: T meand individual is of type T
 
 ///////////////////////////////
 
@@ -219,15 +285,18 @@ First: consider these two statements:
 
 are they equivalent?
     ∀ x (P(x) ⋀ Q(x))  - translation?
+        Everyone is both P and Q
 
 
 
     (∀ x P(x)) ⋀ (∀ x Q(x)) - translation?
+        Everyone is B and everyone is Q
 
 
 
 
 how would we defend our position? 
+    two proofs
 
 
 
@@ -285,6 +354,8 @@ Prove these statements are equivalent:
 
 all2.sc
 
+
+if trying to prove a for all, open let subproof, with random individual, prove whatever you want to prove about that individual. Do a for all introduction.
 ///////////////////////////////////
 
 in-class quiz
