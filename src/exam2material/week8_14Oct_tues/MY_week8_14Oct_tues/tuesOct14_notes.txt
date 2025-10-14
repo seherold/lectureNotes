@@ -17,8 +17,19 @@ Today:
 
 Reminder:
 
+AllE - when can we use?
+    need a for all statement already
+    need an individual
+    use AllE to make that statement about our individual
+
 AllE - use when we have a specific individual, can plug into 
     any for all statement
+
+AllI - when do we use? idea?
+    involves a subproof
+    let, start by naming a random individual
+    goal: reach statement about individual
+    afterwards: introduce a for all statment in the same form as what I showed about the individual
 
 AllI - subproof (starts with "Let"), choosing random individual
     end subproof with a statement about our random individual
@@ -86,9 +97,9 @@ in-class quiz
 ///////////////////////
 
 Exam 2:
-- Thursday, March 13 9:30-10:45
+- Thursday, October 16 9:30-10:45
 - Closed notes, closed computers
-- All "open-ended" problems - similar to HW 4-6
+similar format as exam 1
 
 - Natural deduction proofs in propositional logic, esp. with:
     ImplyI, NegE, NegI, BottomE, PbC
@@ -145,3 +156,96 @@ Predicate logic statements, including:
 ///////////////////////////////////////
 
 Work through practice exam (will post solution after class)
+
+
+#2
+
+List the elements in this set:
+
+(a)
+
+(b)
+
+{-3,2,1,0,1,2,3}
+
+(c)
+
+A = {1,4,7,10,13}
+B = {-2,1,4,7,10}
+
+A ⋂ B = {1,4,7,10}
+
+
+(d)
+
+{x: x = k^2, k ∈ Z, 1 ≤ k ≤ 7 }????
+
+
+(e)
+
+{x: x = 2k+1, k ∈ Z, 0 ≤ k }
+
+
+#3
+
+A = {2,4,5,7,8,10,11}
+B = {1,2,8,10,12}
+
+
+
+
+
+#4
+
+(a)
+
+∃ x (D(x) )
+
+(b)
+
+L(Jose) ⋀ ¬B(Jose)
+
+(c)
+
+Every person in a gardening club has kids.
+
+(d)
+
+There is a person who is a doctor and has not flown on a plane.
+
+
+Not on exam review
+
+T(x,y): x is taller than y
+D(x): x is a doctor
+K(x): x has kids
+
+There is a doctor that is taller than someone with kids.
+
+∃ x ∃ y (D(x) ⋀ K(y) ⋀ T(x,y))
+
+
+
+
+
+#5 
+
+(a)
+
+The square of every integer is greater then the integer itself.
+
+With both 0 and 1, this is not true. 0^2 = 0, 1^2 = 1, and they are not greater than themselves.
+
+The original statement is FALSE because we found two counterexamples for which it was not true.
+
+
+(b)
+
+There is some integer y where for all x, x + y = x - y
+
+Consider y = 0. For all integers x + 0 = x - 0 = x.
+
+The statement is TRUE because there does exist such a y.
+
+
+
