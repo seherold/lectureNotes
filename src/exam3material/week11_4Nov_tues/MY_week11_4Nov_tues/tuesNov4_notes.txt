@@ -4,7 +4,8 @@ HW 8 due tonight
 where Product(m, n) is the product of the integer m and
 the nonnegative integer n
 
-
+base case: n == 0. Product(m, 0) is 0
+recursive case, n > 0: Product(m,n) = m + Product(m,n-1)
 
 
 #5: Use proof by contradiction to prove that the sum of a rational and
@@ -12,15 +13,32 @@ irrational number is irrational.
 
 How to write as an IF/THEN?
 
-
+IF r is rational and i is irrational, THEN r+i is irrational.
 
 
 Rational definition?
 
+r is a rational number if r = p/q where p,q are integers and q != 0
 
 
+How to start the proof?
 
-How to start the proof? 
+Assume r is rational and r is irrational.
+Assume, for the sake of contradiction, that r+i is rational.
+
+If r is rational, then r = p/q where p,q are integers and q != 0.
+If r+i is rational, then r+1 = a/b where a,b are integers and b != 0.
+
+i = r + i - r
+  = a/b - p/q
+
+
+    want: (numerator)/(denominator)
+
+
+(goal: contradiction)
+
+need to show i = c/d where c,d are integers and d != 0.
 
 
 
@@ -41,7 +59,8 @@ Apply proof techniques and similar reasoning to prove correctness
 of basic programs.
 
 (Why does this matter?)
-
+avionics, spacecraft
+medical software
 
 
 
@@ -111,10 +130,15 @@ Then: prove program correctness in "auto" mode
 
 ////////////////////////
 
-Preconditions: ?
+Preconditions: assumptions we need to make about input or
+    parameters in order to prove correctness
 
 
-Postconditions: ?
+Postconditions: describe the results of running the code
+    formally describe what we know at end of a function call
+    or at end of a chunk of code
+
+our goal is to prove the postconditions
 
 
 /////
@@ -143,6 +167,10 @@ assert(some claim)
 
 
 How are Logika asserts different from C# (and other languages)?
+
+Logika: checks if we've proved something
+
+Other lanuages: actually runs the code and compares values
 
 
 
@@ -196,10 +224,15 @@ Premise
 Example:
 
 var input: Z = Z.prompt("Enter a positive number: ")
-assume(num > 0)
+assume(input > 0)
 var y: Z = 12
 
 //proof block? what would go there?
+
+Deduce (
+    1 ( y == 12 ) by Premise,
+    2 ( input > 0 ) by Premise,
+)
 
 
 
@@ -212,8 +245,8 @@ Algebra* (or Algebra T)
 
     Deduce(
         1 ( x == 2 ) by Premise,
-        2 ( x >= 2 ) by ???,
-        3 ( 4 > 0 ) by ???
+        2 ( x >= 2 ) by Algebra*(1), //order doesn't matter when listing out line numbers, can take as many parameters as you need
+        3 ( 4 > 0 ) by Algebra T
     )
 
 
@@ -240,6 +273,10 @@ We want to assert at the end that y is 4
 //////////////////////////////
 
 (in-class quiz)
+
+To justify with premise you need to have that claim in a previous assume, assign, or deduce block
+
+assume(x > 0 & x < 10) is inclusive for 1 to 9
 
 
 //////////////////////////////
