@@ -20,18 +20,28 @@ Recursive functions
 
 if (base case condition) {
     answer = (something)
+    //prove the postconditions
 } else {
 
     //what to do here?
+
+    //we must prove the preconditions (requires) for the function
 
     recursive call
 
     //what can we do here?
 
+    //use the postconditions (ensures) as premises
+
     answer = (something)
+    //prove the postconditions
+
 }
 
 //if we want some postcondition after an if/else, what do we do?
+//answer == something (maybe this is the postcondition)
+//prove that postcondition in the if and the else
+
 
 return answer
 
@@ -60,8 +70,14 @@ while (condition) {
 
 <-- what do we know here?
 
+condition is false
+
 <-- why is this more challenging than if-statements?
 
+
+need: loop invariants
+should be true before loop begins
+should be true at end of each iteration
 
 //////////////////////////////
 
@@ -80,6 +96,7 @@ Steps to proving correctness of a loop:
 1) Prove the invariant is true before the loop begins
 
     (what is this like in mathematical induction?)
+    base case
 
 
 
@@ -87,7 +104,9 @@ Steps to proving correctness of a loop:
     Prove the invariant still holds at the end of the iteration.
 
     (what is this like in mathematical induction?)
+    inductive step
 
+    the assume is like the inductive hypothesis
 
 
 /////////////////////////
@@ -133,6 +152,13 @@ while (condition) {
 
 Example: see code for multiplication with repeated addition
     using a loop (mult_loop.sc)
+
+iterations | 0 | 1 | 2  | 3
+        i  | 0 | 1 | 2  | 3
+    total  | 0 | x | 2x | 3x
+
+how do i and total relate to each other
+total = x*i
 
 --> can we use the function contract from recursive implementation?
 
