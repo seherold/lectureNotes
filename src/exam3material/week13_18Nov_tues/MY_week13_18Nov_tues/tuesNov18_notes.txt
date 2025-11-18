@@ -32,6 +32,12 @@ Loop invariants.
 
 Example: sum_evens.sc
 
+iterations | 0 | 1 | 2 | 3  | 4
+cur        | 0 | 1 | 2 | 3  | 4
+sum        | 0 | 2 | 6 | 12 | 20
+
+sum == n*(n+1)
+
 --> make table of relationship between loop variables
 --> write function contract 
 --> write loop invariant 
@@ -42,31 +48,43 @@ Example: sum_evens.sc
 
 in-class quiz
 
+{x: x = 7k, k in N} -- not recursive
+
 ///////////////////
 
 Exam 3 review.
+
+--covers homeworks 7-10
 
 --> Covers everything since Exam 2 (including today)
 --> Closed notes, closed computers
 
 Topics:
-- Predicate logic proofs emphasizing the existential quantifier
+- Predicate logic proofs emphasizing the existential quantifier -- exists elimintation
 - Recursive definitions (functions and sets)
 - Proof techniques, including:
-    - Mathematical induction
+    - Mathematical induction--will be an open ended problem on this
     - Direct (conditional) proofs
     - Contrapositive proofs 
-    - Proof by contradiction
-    - Proofs on sets
+    - Proof by contradiction--"assume for the sake of contradiction..."
+                            -- then "we have a contradiction therefore what I assumed is not true"
+    - Proofs on sets -- "pick an element in first set, write what that means in set builder notation, try to write in second sets set builder notation"
+                     -- to prove equality go both ways
     --> know the formal definition of even/odd numbers
+        if n is odd n = 2k for some integer k
+    --> she'll write out rational and irrational definitions if we need them
 - Programming logic, including:
     - assumes and asserts
+        -use assume as premise,
+        -prove assert before asset statement
     - Subst and Algebra
     - Verifying programs with:
         - Variable assignments/expressions/updates
         - If/else statements
         - Functions (plus recursive functions and calling functions)
+            -writing function contracts
         - Loops
+            -know what to do with the loop invariant
     - Function contracts (meaning of preconditions/postconditions)
     - Loop invariants
 
@@ -88,3 +106,79 @@ When doing programming logic:
 
 
 Now, we will work through practice exam 3
+3 Let((alias:T)=>SubProof(
+    4 Assume(D(alias)^ !B(alias)),
+    5 (!B(alias)->S(alias)) by AllE[T](2),
+    6 (!B(alias)) by AndE2(4),
+    7 (S(alias)) by ImplyE(5,6),
+    8 (there exitst ((x:T)=> S(x))) by ExistI[T](7)
+    //goal: there exitst ((x:T)=> S(x))
+)),
+9 (there exitst ((x:T)=> S(x))) by ExistE[T](1,3)
+
+//goal: there exitst ((x:T)=> S(x))
+
+
+#8
+
+def sampleFn(x:Z, y:Z): Z = {
+Contract(
+Requires( x+y > 0 ),
+Ensures( Res[Z] == 2*x – y )
+)
+...(code/verification for function)
+}
+//////////// Calling code ///////////
+var a: Z = 4
+var b: Z = 2
+
+Deduce(
+    1 (a == 4) by Premise,
+    2 (b == 2) by Premise,
+    3 ((a-1) + b > 0 ) by Algebra*(1,2)
+    //need: (a-1) + b > 0 
+)
+
+var back: Z = sampleFn(a-1, b)
+
+Deduce(
+    1 (back == 2*(a-1) – b) by Premise,
+    2 (a == 4) by Premise,
+    3 (b == 2) by Premise,
+    4 (back == 4) by Algebra*(1,2,3)
+    //want: back == 4
+)
+
+assert(back == 4)
+
+
+
+#6
+
+
+...
+//assume x is some previously defined variable
+var ans: Z = 2*x
+var k: Z = 0
+//assume loop invariants were already shown to hold before loop began
+while (k < x) {
+Invariant(
+Modifies(k, ans),
+2*x == ans + k,
+k >= 0
+)
+ans = ans - 1
+Deduce(
+[PART 1]
+ 1 (k >= 0) by Premise,
+ 2 (2*x == Old(ans) + k) by Premise,
+ 3
+)
+k = k + 1
+Deduce(
+[PART 2]
+//need: 2*x == ans + k, k >= 0
+)
+}
+...
+
