@@ -68,6 +68,8 @@ For auto, that line is deleted
 Example: See what we can change in multiplication example
     (mult_loop.sc)
 
+    //just need function contract and invariant definition
+
 
 
 
@@ -96,7 +98,11 @@ Suppose "seq" is our sequence
 
 ∀ (0 until seq.size)(k => seq(k) == 0 )
     
-    --> what does this say?
+    --> what does this say? all elements in seq are 0
+
+∀ (0 until seq.size)(k => In(seq)(k) > 0 -> seq(k) == 0 )
+
+    --> what does this say? all elements that were initially positive have been set to 0
 
 
 
@@ -109,19 +115,22 @@ Similarly, can use ∃
 
 ∃ (0 until seq.size)(k => seq(k) == 0 )
 
-    --> what does this say?
+    --> what does this say? one of the positions in seq has been set to 0
 
 ///////////////////////////
 
 Writing function contract for function with a sequence:
 
 - Requires:
-    - Sequence size?
-    - Index parameters?
-- Modifies: when needed?
+    - Sequence size? have requirements to make sure function code won't
+        cause index out of bounds problems
+    - Index parameters? that they be valid positions in the sequence, between 0 and seq.size
+- Modifies: when needed? if the function changes a sequence parameter
 - Ensures:
     - What to describe about sequence?
+        the value of EVERY position in the sequence after calling the function
     - What about return values?
+        Res[Z]
 
 
 
@@ -129,6 +138,7 @@ Writing function contract for function with a sequence:
 
 Use "In(seq)" refers to the state of a sequence at the
     beginning of the function call
+"seq" means value at the end of the function call
 
 
 
