@@ -61,6 +61,8 @@ Example: containsElem.sc
 
 (in-class quiz)
 
+//Remember to look at the elements you didn't chnage or didn't look at in your function
+
 /////////////////////////////
 
 Global variables and global invariants.
