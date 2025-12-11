@@ -12,13 +12,16 @@ Office hour times during finals week.
 What to do with preconditions and postconditions in practice?
 
 precondition violated?
+    function will throw an expection (and leave)
+    so that we only complete function if precondition was met
 
 
 postcondition check?
-
+    assert postcondition
 
 
 --> why might this would be preferable to only using test cases?
+
 
 
 
@@ -32,6 +35,9 @@ Global invariants in practice.
 
 --> where should we call it?
 
+at the beginning of a function
+at the end of a function
+
 
 
 
@@ -41,7 +47,13 @@ See Java Account example
 
 //////////////////////////////////////
 
-Final exam: Thursday, December 16 2:00-3:50 in DUE 1109 (here)
+Final exam: Tuesday, December 16 2:00-3:50 in DUE 1109 (here)
+*Midterm equivalent from final exam
+
+Office hour times during finals week
+
+Jacob having a longer session kind of like a final review
+
 
 Closed notes, closed computers
 
@@ -66,7 +78,7 @@ Cumulative. Similar format as previous exams.
 
 //////////////////////////////////
 
-Do sequence (#9), globals (#10), loop program (#7) first
+Do sequence (#9)--definitely on exam, globals (#10)--definitely on exam, loop or function program (#7)--definitely on exam, first
 
 
 <-- then in-class quiz
